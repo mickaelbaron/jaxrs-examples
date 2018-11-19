@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>fr.mickaelbaron</groupId>
+		<artifactId>parent-jaxrs-examples</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>jaxrs-helloworldrestwebservicefromwar</artifactId>
+	<packaging>war</packaging>
+	<name>HelloWorldRestWebService From War Application</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>helloworldrestwebservicefromwar</finalName>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>war-onlywebxmlpackages</id>
+			<properties>
+				<maven.war.webxml>src\main\webapp_list\WEB-INF\onlywebpackages.xml</maven.war.webxml>
+			</properties>
+		</profile>
+		<profile>
+			<id>war-onlywebxmlclasses</id>
+			<properties>
+				<maven.war.webxml>src\main\webapp_list\WEB-INF\onlywebclasses.xml</maven.war.webxml>
+			</properties>
+		</profile>
+		<profile>
+			<id>war-webapplication</id>
+			<properties>
+				<maven.war.webxml>src\main\webapp_list\WEB-INF\webapplication.xml</maven.war.webxml>
+			</properties>
+		</profile>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>war-withoutweb</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
