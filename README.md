@@ -1,6 +1,6 @@
 # Projet JAXRS-Examples
 
-Un exemple qui montre comment utiliser la spécification JAX-RS et l'implémentation Jersey pour développer un service web REST avec le langage Java.
+Une série d'exemples qui montre comment utiliser la spécification JAX-RS et l'implémentation Jersey pour développer un service web REST avec le langage Java.
 
 L'intérêt par ailleurs est de montrer comment utiliser JAX-RS et son implémentation Jersey avec les versions les plus récentes de Java.
 
