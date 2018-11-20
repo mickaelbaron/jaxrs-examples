@@ -6,15 +6,15 @@ Un exemple qui montre comment utiliser la spécification JAX-RS et l'implémenta
 
 * À la racine du projet, exécuter la ligne de commande suivante :
 
-```shellscript
+```bash
 mvn clean package
 ```
 
 ## Comment exécuter
 
-* Toujours depuis la racine du projet, exécuter la ligne de commande suivante :
+* Toujours depuis la racine du projet, exécuter la ligne de commande suivante :
 
-```shellscript
+```bash
 $ java -cp "target/classes:target/dependency/*" fr.mickaelbaron.helloworldrestwebservice.HelloWorldRestWebServiceLauncher
 oct. 31, 2018 4:02:36 PM org.glassfish.grizzly.http.server.NetworkListener start
 INFO: Started listener bound to [localhost:9992]
@@ -26,7 +26,7 @@ Hit enter to stop it...
 
 ## Tester
 
-* Depuis un navigateur web, saisir les URL suivantes :
+* Depuis un navigateur web, saisir les URL suivantes :
   * <http://localhost:8080/helloworldrestwebservice/api/hello> pour faire appel à la ressource `/hello` ;
   * <http://localhost:9992/helloworldrestwebservice/api/application.wadl> pour générer le contrat WADL.
   
