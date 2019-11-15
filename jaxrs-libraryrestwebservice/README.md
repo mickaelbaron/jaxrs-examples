@@ -15,7 +15,7 @@ mvn clean package
 * Toujours depuis la racine du projet, exécuter la ligne de commande suivante pour exécuter le programme principal définie par la classe `LibraryRestWebServiceLauncher` permettant les déploiements des ressources `BookResource`, `BookResponseResource` et `BookContentResource`.
 
 ```bash
-java -cp "target/classes:target/dependency/*" fr.mickaelbaron.helloworldrestwebservice.HelloWorldRestWebServiceLauncher
+java -cp "target/classes:target/dependency/*" fr.mickaelbaron.libraryrestwebservice.LibraryRestWebServiceLauncher
 ```
 
 ## Tester

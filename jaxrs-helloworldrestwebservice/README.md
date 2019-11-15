@@ -27,6 +27,6 @@ Hit enter to stop it...
 ## Tester
 
 * Depuis un navigateur web, saisir les URL suivantes :
-  * <http://localhost:8080/helloworldrestwebservice/api/hello> pour faire appel à la ressource `/hello` ;
+  * <http://localhost:9992/helloworldrestwebservice/api/hello> pour faire appel à la ressource `/hello` ;
   * <http://localhost:9992/helloworldrestwebservice/api/application.wadl> pour générer le contrat WADL.
   

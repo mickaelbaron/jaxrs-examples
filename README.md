@@ -9,12 +9,12 @@ L'intérêt par ailleurs est de montrer comment utiliser JAX-RS et son implémen
 ## Prérequis
 
 * Java 11
-* Maven 3.5.3
+* Maven 3
 * cURL
 
 ## Ressources
 
-* Site web de JAXRS : <https://github.com/eclipse-ee4j/jaxrs-api>
+* Site web de JAX-RS : <https://github.com/eclipse-ee4j/jaxrs-api>
 * Spécification JSR 370 : <https://jcp.org/en/jsr/detail?id=370>
 * Site web de Jersey : <https://jersey.github.io/>
 * Code source de Jersey : <https://github.com/eclipse-ee4j/jersey>
