@@ -1,9 +1,9 @@
 package fr.mickaelbaron.libraryrestwebservice;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author Mickael BARON (baron.mickael@gmail.com)

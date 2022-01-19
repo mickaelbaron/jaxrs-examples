@@ -1,8 +1,8 @@
 package fr.mickaelbaron.helloworldrestwebservice;
 
-import javax.ws.rs.ApplicationPath;
-
 import org.glassfish.jersey.server.ResourceConfig;
+
+import jakarta.ws.rs.ApplicationPath;
 
 /**
  * @author Mickael BARON (baron.mickael@gmail.com)

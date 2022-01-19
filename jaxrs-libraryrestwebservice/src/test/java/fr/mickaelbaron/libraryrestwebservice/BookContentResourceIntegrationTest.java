@@ -6,17 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Assert;
 import org.junit.Test;
+
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Application;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  * @author Mickael BARON (baron.mickael@gmail.com)
@@ -110,7 +110,7 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 
 		// When
 		Response response = target("/contentbooks").path("xml").request(MediaType.APPLICATION_XML).get();
-		
+
 		// Then
 		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
 		Book currentBook = response.readEntity(Book.class);
@@ -157,7 +157,8 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 
 		// Then
 		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
-		Assert.assertEquals("{\"book_name\":\"Harry\",\"book_isbn\":\"1-111111-11\"}", response.readEntity(String.class));
+		Assert.assertEquals("{\"book_name\":\"Harry\",\"book_isbn\":\"1-111111-11\"}",
+				response.readEntity(String.class));
 	}
 
 	@Test
@@ -194,7 +195,7 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 		Assert.assertEquals("1-111111-11", currentBook.getIsbn());
 		Assert.assertEquals("Harry", currentBook.getName());
 	}
-	
+
 	@Test
 	public void getContentBooksWithJSONTest() {
 		// Given
@@ -204,9 +205,10 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 
 		// Then
 		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
-		List<Book> books = response.readEntity(new GenericType<List<Book>>(){});
+		List<Book> books = response.readEntity(new GenericType<List<Book>>() {
+		});
 		Assert.assertEquals(2, books.size());
 		Assert.assertEquals("1-111111-11", books.get(0).getIsbn());
-		Assert.assertEquals("Harry", books.get(0).getName());		
+		Assert.assertEquals("Harry", books.get(0).getName());
 	}
 }
