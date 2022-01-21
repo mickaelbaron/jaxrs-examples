@@ -20,7 +20,7 @@ Choisissez l'une des quatre configurations pour la compilation.
 * À la racine du projet, exécuter la ligne de commande suivante pour générer le fichier _.war_ :
 
 ```bash
-mvn clean package -P war-onlywebxmlpackages
+$ mvn clean package -P war-onlywebxmlpackages
 ```
 
 #### Déclaration des ressources depuis _web.xml_
@@ -28,7 +28,7 @@ mvn clean package -P war-onlywebxmlpackages
 * À la racine du projet, exécuter la ligne de commande suivante pour générer le fichier _.war_ :
 
 ```bash
-mvn clean package -P war-onlywebxmlclasses
+$ mvn clean package -P war-onlywebxmlclasses
 ```
 
 #### Déclaration de ressources avec `ResourceConfig` depuis _web.xml_
@@ -36,7 +36,7 @@ mvn clean package -P war-onlywebxmlclasses
 * À la racine du projet, exécuter la ligne de commande suivante pour générer le fichier _.war_ :
 
 ```bash
-mvn clean package -P war-webapplication
+$ mvn clean package -P war-webapplication
 ```
 
 #### Déclaration de ressources avec `ResourceConfig` sans _web.xml_
@@ -44,21 +44,21 @@ mvn clean package -P war-webapplication
 * À la racine du projet, exécuter la ligne de commande suivante pour générer le fichier _.war_ :
 
 ```bash
-mvn clean package -P war-withoutweb
+$ mvn clean package -P war-withoutweb
 ```
 
 ### Comment déployer
 
-* Exécuter la ligne de commande suivante pour télécharger l'image Docker correspondant à la version 9 de Tomcat s'exécutant sous un JRE 11
+* Exécuter la ligne de commande suivante pour télécharger l'image Docker correspondant à la version 10 de Tomcat s'exécutant sous un JRE 11
 
 ```bash
-docker pull tomcat:9-jre11-slim
+$ docker pull tomcat:jre11-openjdk-slim
 ```
 
 * Exécuter la ligne de commande suivante permettant de créer un conteneur Docker
 
 ```bash
-docker run --rm --name helloworldrestservice-tomcat -v $(pwd)/target/helloWorldrestwebservicefromwar.war:/usr/local/tomcat/webapps/helloworldrestwebservicefromwar.war -it -p 8080:8080 tomcat:9-jre11-slim
+$ docker run --rm --name helloworldrestservice-tomcat -v $(pwd)/target/helloWorldrestwebservicefromwar.war:/usr/local/tomcat/webapps/helloworldrestwebservicefromwar.war -it -p 8080:8080 tomcat:jre11-openjdk-slim
 ```
 
 ## Tester
