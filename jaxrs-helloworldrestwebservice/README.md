@@ -15,7 +15,12 @@ mvn clean package
 * Toujours depuis la racine du projet, exécuter la ligne de commande suivante :
 
 ```bash
-$ java -cp "target/classes:target/dependency/*" fr.mickaelbaron.helloworldrestwebservice.HelloWorldRestWebServiceLauncher
+java -cp "target/classes:target/dependency/*" fr.mickaelbaron.helloworldrestwebservice.HelloWorldRestWebServiceLauncher
+```
+
+La sortie console attendue :
+
+```bash
 oct. 31, 2018 4:02:36 PM org.glassfish.grizzly.http.server.NetworkListener start
 INFO: Started listener bound to [localhost:9992]
 oct. 31, 2018 4:02:36 PM org.glassfish.grizzly.http.server.HttpServer start

@@ -27,21 +27,45 @@
 	<profiles>
 		<profile>
 			<id>war-onlywebxmlpackages</id>
-			<properties>
-				<maven.war.webxml>src\main\webapp_list\WEB-INF\onlywebpackages.xml</maven.war.webxml>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webXml>src\main\webapp_list\WEB-INF\onlywebpackages.xml</webXml>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>war-onlywebxmlclasses</id>
-			<properties>
-				<maven.war.webxml>src\main\webapp_list\WEB-INF\onlywebclasses.xml</maven.war.webxml>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webXml>src\main\webapp_list\WEB-INF\onlywebclasses.xml</webXml>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>war-webapplication</id>
-			<properties>
-				<maven.war.webxml>src\main\webapp_list\WEB-INF\webapplication.xml</maven.war.webxml>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webXml>src\main\webapp_list\WEB-INF\webapplication.xml</webXml>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<activation>

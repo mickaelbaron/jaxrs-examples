@@ -2,8 +2,8 @@ package fr.mickaelbaron.libraryrestwebservice;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
@@ -30,10 +30,10 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Cuisine et moi / Java 18", content);
+		Assertions.assertEquals("Cuisine et moi / Java 18", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -44,10 +44,10 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/borrowed").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Java in 5 lessons / Java VS .NET", content);
+		Assertions.assertEquals("Java in 5 lessons / Java VS .NET", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -59,10 +59,10 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books").path(pathParam).request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Java For Life 123", content);
+		Assertions.assertEquals("Java For Life 123", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -75,11 +75,11 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/name-" + namePathParam + "-editor-" + editorPathParam).request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Starcraft 2 for Dummies (Name:sc2 - Editor:oreilly)",
-				content);
+		Assertions.assertEquals("Starcraft 2 for Dummies (Name:sc2 - Editor:oreilly)",
+				content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -91,10 +91,10 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/" + megaPathParam).path("editor").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "OReilly", content);
+		Assertions.assertEquals("OReilly", content, "Content of ressponse is: ");
 
 	}
 
@@ -107,10 +107,10 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/original/").path(megaPathParam).request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Science will reveal the truth", content);
+		Assertions.assertEquals("Science will reveal the truth", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -122,10 +122,10 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/specific/").path(pathParam).request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", ".NET platform is Bad", content);
+		Assertions.assertEquals(".NET platform is Bad", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -137,10 +137,10 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books").request().post(Entity.text(bookContent));
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Le livre", content);
+		Assertions.assertEquals("Le livre", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -152,7 +152,8 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books").path(pathParam).request().put(Entity.text("Le livre"));
 
 		// Then
-		Assert.assertEquals("Http Response should be 204: ", Status.NO_CONTENT.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.NO_CONTENT.getStatusCode(), response.getStatus(),
+				"Http Response should be 204: ");
 	}
 
 	@Test
@@ -164,7 +165,8 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books").path(pathParam).request().delete();
 
 		// Then
-		Assert.assertEquals("Http Response should be 204: ", Status.NO_CONTENT.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.NO_CONTENT.getStatusCode(), response.getStatus(),
+				"Http Response should be 204: ");
 	}
 
 	@Test
@@ -179,7 +181,7 @@ public class BookResourceIntegrationTest extends JerseyTest {
 				.queryParam("isExtended", isExtended).request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 	}
 
 	@Test
@@ -193,9 +195,9 @@ public class BookResourceIntegrationTest extends JerseyTest {
 				.post(Entity.form(form));
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "untest", content);
+		Assertions.assertEquals("untest", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -210,9 +212,9 @@ public class BookResourceIntegrationTest extends JerseyTest {
 				.header("isExtended", isExtended).get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "harry 1-111111-11 true", content);
+		Assertions.assertEquals("harry 1-111111-11 true", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -224,7 +226,7 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/informationfromuriinfo/").path(pathParam).request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 	}
 
 	@Test
@@ -235,51 +237,55 @@ public class BookResourceIntegrationTest extends JerseyTest {
 		Response response = target("/books/informationfromhttpheaders/").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 	}
 
 	@Test
 	public void getDetailTextBookIdTest() {
 		// Given
 		String pathName = "12";
-		
+
 		// When
 		Response response = target("/books/details/").path(pathName).request(MediaType.TEXT_PLAIN).get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Ce livre est une introduction sur la vie", content);
-		Assert.assertEquals(MediaType.TEXT_PLAIN_TYPE, response.getMediaType());
+		Assertions.assertEquals("Ce livre est une introduction sur la vie", content, "Content of ressponse is: ");
+		Assertions.assertEquals(MediaType.TEXT_PLAIN_TYPE, response.getMediaType());
 	}
-	
+
 	@Test
 	public void getDetailXMLBookIdTest() {
 		// Given
 		String pathName = "12";
-		
+
 		// When
 		Response response = target("/books/details/").path(pathName).request(MediaType.TEXT_XML).get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "<?xml version=\"1.0\"?><details>Ce livre est une introduction sur la vie</details>", content);
-		Assert.assertEquals(MediaType.TEXT_XML_TYPE, response.getMediaType());
+		Assertions.assertEquals(
+				"<?xml version=\"1.0\"?><details>Ce livre est une introduction sur la vie</details>", content,
+				"Content of ressponse is: ");
+		Assertions.assertEquals(MediaType.TEXT_XML_TYPE, response.getMediaType());
 	}
-	
+
 	@Test
 	public void getDetailHTMLBookIdTest() {
 		// Given
 		String pathName = "12";
-		
+
 		// When
 		Response response = target("/books/details/").path(pathName).request(MediaType.TEXT_HTML).get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "<html><title>Details</title><body><h1>Ce livre est une introduction sur la vie</h1></body></html>", content);
-		Assert.assertEquals(MediaType.TEXT_HTML_TYPE, response.getMediaType());
+		Assertions.assertEquals(
+				"<html><title>Details</title><body><h1>Ce livre est une introduction sur la vie</h1></body></html>",
+				content, "Content of ressponse is: ");
+		Assertions.assertEquals(MediaType.TEXT_HTML_TYPE, response.getMediaType());
 	}
 }

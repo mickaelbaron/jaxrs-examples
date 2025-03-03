@@ -12,7 +12,7 @@ Une série d'exemples qui montre comment utiliser la spécification JAX-RS et l'
 
 ## Ressources
 
-* Site web de JAX-RS : <https://github.com/eclipse-ee4j/jaxrs-api>
+* Site web de JAX-RS : <https://github.com/jakartaee/rest>
 * Spécification JSR 370 : <https://jcp.org/en/jsr/detail?id=370>
 * Site web de Jersey : <https://jersey.github.io/>
 * Code source de Jersey : <https://github.com/eclipse-ee4j/jersey>

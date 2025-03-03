@@ -2,8 +2,8 @@ package fr.mickaelbaron.libraryrestwebservice;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
@@ -28,10 +28,10 @@ public class BookResponseResourceIntegrationTest extends JerseyTest {
 		Response response = target("/responsebooks/ok").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Java For Life", content);
+		Assertions.assertEquals("Java For Life", content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -42,12 +42,12 @@ public class BookResponseResourceIntegrationTest extends JerseyTest {
 		Response response = target("/responsebooks/ok/headers").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ", "Java For Life", content);
+		Assertions.assertEquals("Java For Life", content, "Content of ressponse is: ");
 		String headerString = response.getHeaderString("param1");
-		Assert.assertNotNull(headerString);
-		Assert.assertEquals("value1", headerString);
+		Assertions.assertNotNull(headerString);
+		Assertions.assertEquals("value1", headerString);
 	}
 
 	@Test
@@ -58,13 +58,13 @@ public class BookResponseResourceIntegrationTest extends JerseyTest {
 		Response response = target("/responsebooks/ok/json").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
-		Assert.assertEquals(MediaType.APPLICATION_JSON_TYPE, response.getMediaType());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
+		Assertions.assertEquals(MediaType.APPLICATION_JSON_TYPE, response.getMediaType());
 
 		Book content = response.readEntity(Book.class);
-		Assert.assertEquals("Content of ressponse is: ", "Harry", content.toString());
+		Assertions.assertEquals("Harry", content.toString(), "Content of ressponse is: ");
 	}
-	
+
 	@Test
 	public void getBookJSONAnnotationTest() {
 		// Given
@@ -73,32 +73,34 @@ public class BookResponseResourceIntegrationTest extends JerseyTest {
 		Response response = target("/responsebooks/ok/json_annotation").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
-		Assert.assertEquals(MediaType.APPLICATION_JSON_TYPE, response.getMediaType());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
+		Assertions.assertEquals(MediaType.APPLICATION_JSON_TYPE, response.getMediaType());
 
 		Book content = response.readEntity(Book.class);
-		Assert.assertEquals("Content of ressponse is: ", "Harry", content.toString());
+		Assertions.assertEquals("Harry", content.toString(), "Content of ressponse is: ");
 	}
-	
+
 	@Test
 	public void getBookWithWebApplicationExceptionTest() {
 		// Given
-		
+
 		// When
 		Response response = target("/responsebooks/error/webapplicationexception").request().get();
-		
+
 		// Then
-		Assert.assertEquals("Http Response should be 400: ", Status.BAD_REQUEST.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.BAD_REQUEST.getStatusCode(), response.getStatus(),
+				"Http Response should be 400: ");
 	}
-	
+
 	@Test
 	public void getBookWithErrorTest() {
 		// Given
-		
+
 		// When
 		Response response = target("/responsebooks/error").request().get();
-		
+
 		// Then
-		Assert.assertEquals("Http Response should be 400: ", Status.BAD_REQUEST.getStatusCode(), response.getStatus());	
+		Assertions.assertEquals(Status.BAD_REQUEST.getStatusCode(), response.getStatus(),
+				"Http Response should be 400: ");
 	}
 }

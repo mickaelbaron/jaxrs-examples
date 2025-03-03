@@ -18,6 +18,17 @@ mvn clean package
 java -cp "target/classes:target/dependency/*" fr.mickaelbaron.libraryrestwebservice.LibraryRestWebServiceLauncher
 ```
 
+La sortie console attendue :
+
+```bash
+mars 03, 2025 9:00:42 AM org.glassfish.grizzly.http.server.NetworkListener start
+INFO: Started listener bound to [localhost:9992]
+mars 03, 2025 9:00:42 AM org.glassfish.grizzly.http.server.HttpServer start
+INFO: [HttpServer] Started.
+Jersey app started with WADL available at http://localhost:9992/libraryrestwebservice/api/application.wadl
+Hit enter to stop it...
+```
+
 ## Tester
 
 Les trois ressources `BookResource`, `BookResponseResource` et `BookContentResource` sont disponibles respectivement via les URI `/books`, `/responsebooks` et `/contentbooks`. Pour tester les différents services proposés par ces ressources, une solution simple est d'utiliser l'outil en ligne de commande **cURL**.

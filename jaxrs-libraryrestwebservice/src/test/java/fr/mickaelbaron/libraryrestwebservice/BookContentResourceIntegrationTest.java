@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
@@ -37,11 +37,11 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 				.put(Entity.entity(new FileInputStream("src/main/resources/sample.txt"), "application/octet-stream"));
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ",
+		Assertions.assertEquals(
 				"Moira is one of the support heroes of Overwatch. She is a geneticist that secretly works for Talon and currently resides in Oasis.",
-				content);
+				content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -52,10 +52,10 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 		Response response = target("/contentbooks/").path("inputstream").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		InputStream readEntity = response.readEntity(InputStream.class);
-		Assert.assertNotNull(readEntity);
+		Assertions.assertNotNull(readEntity);
 
 	}
 
@@ -68,11 +68,11 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 				.put(Entity.entity(new File("src/main/resources/sample.txt"), "application/octet-stream"));
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		String content = response.readEntity(String.class);
-		Assert.assertEquals("Content of ressponse is: ",
+		Assertions.assertEquals(
 				"Moira is one of the support heroes of Overwatch. She is a geneticist that secretly works for Talon and currently resides in Oasis.",
-				content);
+				content, "Content of ressponse is: ");
 	}
 
 	@Test
@@ -83,10 +83,10 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 		Response response = target("/contentbooks/").path("file").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 
 		File readEntity = response.readEntity(File.class);
-		Assert.assertNotNull(readEntity);
+		Assertions.assertNotNull(readEntity);
 	}
 
 	@Test
@@ -101,7 +101,8 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 				.put(Entity.entity(myBook, MediaType.APPLICATION_XML_TYPE));
 
 		// Then
-		Assert.assertEquals("Http Response should be 204: ", Status.NO_CONTENT.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.NO_CONTENT.getStatusCode(), response.getStatus(),
+				"Http Response should be 204: ");
 	}
 
 	@Test
@@ -112,10 +113,10 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 		Response response = target("/contentbooks").path("xml").request(MediaType.APPLICATION_XML).get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		Book currentBook = response.readEntity(Book.class);
-		Assert.assertEquals("1-111111-11", currentBook.getIsbn());
-		Assert.assertEquals("Harry", currentBook.getName());
+		Assertions.assertEquals("1-111111-11", currentBook.getIsbn());
+		Assertions.assertEquals("Harry", currentBook.getName());
 	}
 
 	@Test
@@ -130,7 +131,8 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 				.put(Entity.entity(myBook, MediaType.APPLICATION_JSON_TYPE));
 
 		// Then
-		Assert.assertEquals("Http Response should be 204: ", Status.NO_CONTENT.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.NO_CONTENT.getStatusCode(), response.getStatus(),
+				"Http Response should be 204: ");
 	}
 
 	@Test
@@ -145,7 +147,8 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 				.put(Entity.json("{\"book_name\":\"Harry\",\"book_isbn\":\"1-111111-11\"}"));
 
 		// Then
-		Assert.assertEquals("Http Response should be 204: ", Status.NO_CONTENT.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.NO_CONTENT.getStatusCode(), response.getStatus(),
+				"Http Response should be 204: ");
 	}
 
 	@Test
@@ -156,8 +159,8 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 		Response response = target("/contentbooks").path("json").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
-		Assert.assertEquals("{\"book_name\":\"Harry\",\"book_isbn\":\"1-111111-11\"}",
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
+		Assertions.assertEquals("{\"book_name\":\"Harry\",\"book_isbn\":\"1-111111-11\"}",
 				response.readEntity(String.class));
 	}
 
@@ -170,7 +173,7 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 				.get(String.class);
 
 		// Then
-		Assert.assertEquals(
+		Assertions.assertEquals(
 				"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><book><isbn>1-111111-11</isbn><name>Harry</name></book>",
 				currentBook);
 
@@ -179,7 +182,7 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 				.get(String.class);
 
 		// Then
-		Assert.assertEquals("{\"book_name\":\"Harry\",\"book_isbn\":\"1-111111-11\"}", currentBook);
+		Assertions.assertEquals("{\"book_name\":\"Harry\",\"book_isbn\":\"1-111111-11\"}", currentBook);
 	}
 
 	@Test
@@ -190,10 +193,10 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 		Response response = target("/contentbooks").path("json").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		Book currentBook = response.readEntity(Book.class);
-		Assert.assertEquals("1-111111-11", currentBook.getIsbn());
-		Assert.assertEquals("Harry", currentBook.getName());
+		Assertions.assertEquals("1-111111-11", currentBook.getIsbn());
+		Assertions.assertEquals("Harry", currentBook.getName());
 	}
 
 	@Test
@@ -204,11 +207,11 @@ public class BookContentResourceIntegrationTest extends JerseyTest {
 		Response response = target("/contentbooks").request().get();
 
 		// Then
-		Assert.assertEquals("Http Response should be 200: ", Status.OK.getStatusCode(), response.getStatus());
+		Assertions.assertEquals(Status.OK.getStatusCode(), response.getStatus(), "Http Response should be 200: ");
 		List<Book> books = response.readEntity(new GenericType<List<Book>>() {
 		});
-		Assert.assertEquals(2, books.size());
-		Assert.assertEquals("1-111111-11", books.get(0).getIsbn());
-		Assert.assertEquals("Harry", books.get(0).getName());
+		Assertions.assertEquals(2, books.size());
+		Assertions.assertEquals("1-111111-11", books.get(0).getIsbn());
+		Assertions.assertEquals("Harry", books.get(0).getName());
 	}
 }
