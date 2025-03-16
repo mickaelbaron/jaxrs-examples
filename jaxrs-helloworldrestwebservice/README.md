@@ -4,7 +4,7 @@ Un exemple qui montre comment utiliser la spécification JAX-RS et l'implémenta
 
 ## Comment compiler
 
-* À la racine du projet, exécuter la ligne de commande suivante :
+- À la racine du projet, exécuter la ligne de commande suivante :
 
 ```bash
 mvn clean package
@@ -12,7 +12,7 @@ mvn clean package
 
 ## Comment exécuter
 
-* Toujours depuis la racine du projet, exécuter la ligne de commande suivante :
+- Toujours depuis la racine du projet, exécuter la ligne de commande suivante :
 
 ```bash
 java -cp "target/classes:target/dependency/*" fr.mickaelbaron.helloworldrestwebservice.HelloWorldRestWebServiceLauncher
@@ -31,7 +31,6 @@ Hit enter to stop it...
 
 ## Tester
 
-* Depuis un navigateur web, saisir les URL suivantes :
-  * <http://localhost:9992/helloworldrestwebservice/api/hello> pour faire appel à la ressource `/hello` ;
-  * <http://localhost:9992/helloworldrestwebservice/api/application.wadl> pour générer le contrat WADL.
-  
+- Depuis un navigateur web, saisir les URL suivantes :
+  - <http://localhost:9992/helloworldrestwebservice/api/hello> pour faire appel à la ressource `/hello` ;
+  - <http://localhost:9992/helloworldrestwebservice/api/application.wadl> pour générer le contrat WADL.

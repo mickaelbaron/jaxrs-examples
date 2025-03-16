@@ -4,7 +4,7 @@ Un exemple qui montre comment utiliser la spécification JAX-RS et l'implémenta
 
 ## Comment compiler
 
-* À la racine du projet, exécuter la ligne de commande suivante pour compiler les classes et exécuter les tests d'intégration :
+- À la racine du projet, exécuter la ligne de commande suivante pour compiler les classes et exécuter les tests d'intégration :
 
 ```bash
 mvn clean package
@@ -12,7 +12,7 @@ mvn clean package
 
 ## Comment exécuter
 
-* Toujours depuis la racine du projet, exécuter la ligne de commande suivante pour exécuter le programme principal définie par la classe `LibraryRestWebServiceLauncher` permettant les déploiements des ressources `BookResource`, `BookResponseResource` et `BookContentResource`.
+- Toujours depuis la racine du projet, exécuter la ligne de commande suivante pour exécuter le programme principal définie par la classe `LibraryRestWebServiceLauncher` permettant les déploiements des ressources `BookResource`, `BookResponseResource` et `BookContentResource`.
 
 ```bash
 java -cp "target/classes:target/dependency/*" fr.mickaelbaron.libraryrestwebservice.LibraryRestWebServiceLauncher
@@ -33,7 +33,7 @@ Hit enter to stop it...
 
 Les trois ressources `BookResource`, `BookResponseResource` et `BookContentResource` sont disponibles respectivement via les URI `/books`, `/responsebooks` et `/contentbooks`. Pour tester les différents services proposés par ces ressources, une solution simple est d'utiliser l'outil en ligne de commande **cURL**.
 
-* Depuis la ligne de commande, exécuter l'instruction suivante pour invoquer la méthode `BookContentResource#updateContentBooksWithJSON` permettant de mettre à jour (PUT) les données d'un livre transmis en JSON :
+- Depuis la ligne de commande, exécuter l'instruction suivante pour invoquer la méthode `BookContentResource#updateContentBooksWithJSON` permettant de mettre à jour (PUT) les données d'un livre transmis en JSON :
 
 ```bash
 curl --header "Content-Type: application/json" --request PUT --data '{"book_name":"harry","book_isbn":"1-111111-11"}' http://localhost:9992/libraryrestwebservice/api/contentbooks/json
